@@ -1,0 +1,8 @@
+query Podcast {
+  podcast {
+    id,
+    artistName,
+    name,
+    artworkUrl100
+  }
+}
