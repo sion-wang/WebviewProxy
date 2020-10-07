@@ -1,9 +1,7 @@
 package com.sion.mvvm.view.splash
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -48,6 +46,17 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 request: WebResourceRequest?
             ): Boolean {
                 return super.shouldOverrideUrlLoading(view, request)
+            }
+        }
+
+        binding.webView.setOnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.action == MotionEvent.ACTION_UP
+                && binding.webView.canGoBack()) {
+                binding.webView.goBack()
+                true
+            } else {
+                false
             }
         }
 
